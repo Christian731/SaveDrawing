@@ -1,0 +1,5 @@
+<?xml version="1.0" ?>
+<guzzle>
+	<baseURI>http://localhost/SaveDrawing/drawingservice/api/</baseURI>
+	<timeout>2.0</timeout>
+</guzzle>

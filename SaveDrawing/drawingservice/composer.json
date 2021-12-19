@@ -1,0 +1,8 @@
+{
+    "require": {
+        "guzzlehttp/guzzle": "^7.4",
+        "aws/aws-sdk-php": "^3.200",
+        "firebase/php-jwt": "^5.5",
+        "zircote/swagger-php": "^4.0"
+    }
+}
