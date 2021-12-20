@@ -52,14 +52,23 @@
     // echo json_encode($files);
     // curl_close($ch);
 
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, 'http://localhost/SaveDrawing/drawingservice/api/file/?authorize=no&userName='.$userName."&fileName=Ayaka");
-    curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json', 'Authorization: Bearer '.$token));
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    $response = curl_exec($ch);
-    // close cURL reource, and free up system resources
-    var_dump($response);
-    $files = json_decode($response)->payload;
-    echo $files;
-    curl_close($ch);
+    // Inserting file.
+    $insertFile = $client->request('POST', 'http://localhost/SaveDrawing/drawingservice/api/file/', 
+    ['headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json', 'Authorization' => 'Bearer ' . $token], 
+    'body' => json_encode(array(        
+    'userName' => 'ebra',
+    'pw' => 'pass123',
+    'format' => '.jpg',
+    'rawFile' => 'C:\xampp\htdocs\SaveDrawing\drawingservice\api\orangePic.jpg',
+    'fileName' => 'Ayaka.png'
+    )), 'multipart' => [
+        [
+        'Content-type' => 'multipart/form-data',
+        'name' => 'file_name',
+        'contents' => file_get_contents('C:\xampp\htdocs\SaveDrawing\drawingservice\SavedFiles\Ayaka.png', 'file_name')
+        ]
+    ]
+    ]);
+    echo $insertFile->getBody();
+    
 ?>

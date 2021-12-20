@@ -50,12 +50,12 @@ if (class_exists($controllerName)) {
     if ($request->accept == "application/json") {
         if ($request->verb == "POST") {
             $data = json_decode($request->payload);
+            var_dump($request->payload);
 
             //Check if the controller is for files
             if ($controllerName == "FileController") {
                 try {
                     $jwt;
-
                     //Extracts the token
                     foreach (getallheaders() as $name => $value) {
                         if($name == "Authorization"){
@@ -72,13 +72,9 @@ if (class_exists($controllerName)) {
                         $client = new ClientController();
                         $client = $client->getClient($data->userName);
                         if ($client != null) {
-                            if ($client["pw"] == $data->pw) {
-                                $controller->addFile($client["clientID"], $data->format, $data->rawFile, $data->fileName);
-                                $targetFolder = dirname(__DIR__, 1) . "\\SavedFiles";
-                                move_uploaded_file($_FILES['orig_file']['tmp_name'], $targetFolder . $_FILES['orig_file']['name']);
-                            } else {
-                                echo "wrong password";
-                            }
+                            $controller->addFile($client["clientID"], $data->format, $data->rawFile, $data->fileName);
+                            $targetFolder = dirname(__DIR__, 1) . "\\SavedFiles";
+                            move_uploaded_file($_FILES['orig_file']['tmp_name'], $targetFolder . $_FILES['orig_file']['name']);
                         } else {
                             echo "client does not exist";
                         }
@@ -163,7 +159,7 @@ if (class_exists($controllerName)) {
                         $client = $client->getClient($data["userName"]);
                         $file = $controller->getFile($data["fileName"]);
                         // var_dump($file);
-                        $url = 'http://localhost/SaveDrawing/drawingservice/SavedFiles/'. $file["fileName"].".png";
+                        $url = 'http://localhost/SaveDrawing/drawingservice/SavedFiles/'. $file["fileName"].$file["format"];
                         $file_name = basename($url);
                         if (file_put_contents($file_name, file_get_contents($url)))
                         {
