@@ -49,8 +49,9 @@ if (class_exists($controllerName)) {
     $controller = new $controllerName();
     if ($request->accept == "application/json") {
         if ($request->verb == "POST") {
-            $data = json_decode($request->payload);
+            echo "\n\npayload\n\n";
             var_dump($request->payload);
+            // $data = json_decode($request->payload);
 
             //Check if the controller is for files
             if ($controllerName == "FileController") {
