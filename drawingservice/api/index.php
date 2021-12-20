@@ -47,10 +47,9 @@ $controllerName = ucfirst($keys[0]) . 'Controller';
 if (class_exists($controllerName)) {
 
     $controller = new $controllerName();
+
     if ($request->accept == "application/json") {
         if ($request->verb == "POST") {
-            echo "\n\npayload\n\n";
-            var_dump($request->payload);
             // $data = json_decode($request->payload);
 
             //Check if the controller is for files
@@ -65,17 +64,17 @@ if (class_exists($controllerName)) {
                     }
                     
                     //Validate the token
-                    $clientUserName = $data->userName;
+                    $clientUserName = $data["userName"];
                     $isValid = checkToken($jwt, $clientUserName, $hash);
 
                     //Add a new file when the token is valid
                     if($isValid) {
                         $client = new ClientController();
-                        $client = $client->getClient($data->userName);
+                        $client = $client->getClient($data["userName"]);
                         if ($client != null) {
-                            $controller->addFile($client["clientID"], $data->format, $data->rawFile, $data->fileName);
+                            $controller->addFile($client["clientID"], $data["format"], $data["rawFile"], $data["fileName"]);
                             $targetFolder = dirname(__DIR__, 1) . "\\SavedFiles";
-                            move_uploaded_file($_FILES['orig_file']['tmp_name'], $targetFolder . $_FILES['orig_file']['name']);
+                            move_uploaded_file($_FILES['FileContents']['tmp_name'], $targetFolder . "\\" . $_FILES['FileContents']['name']);
                         } else {
                             echo "client does not exist";
                         }
@@ -91,6 +90,7 @@ if (class_exists($controllerName)) {
             }
             // Posts a new client
             else {
+                $data = json_decode($request->payload);
                 $client = $controller->addClient($data->clientName, $data->userName, $data->password);
                 $response->payload = $client;
             }

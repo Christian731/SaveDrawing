@@ -8,9 +8,9 @@
 
     $client = new GuzzleHttp\Client();
 
-    $pw = "pass123";
-    $userName= "ebra";
-    $file = "D:\XAMPP\htdocs\SaveDrawing\drawingservice\client\orange.jpg";
+    $pw = "wefrwef";
+    $userName= "sexybeast69";
+    $file = "D:\\XAMPP\\htdocs\\SaveDrawing\\drawingservice\\client\\orange.jpg";
 
     //Authorizing. 
     $authorize = $client->request('GET', 'http://localhost/SaveDrawing/drawingservice/api/client/?authorize=yes&pw='. $pw. "&userName=" . $userName, ['headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json']]);
@@ -52,26 +52,15 @@
 	// ))]);
     // echo $insertFile->getBody();
     
-        // Inserting file.
-    $insertFile = $client->request('POST', 'http://localhost/SaveDrawing/drawingservice/api/file/', 
-    ['headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json', 'Authorization' => 'Bearer ' . $token], 
+    // Inserting file.
+    $insertFile = $client->request('POST', 'http://localhost/SaveDrawing/drawingservice/api/file/?userName=sexybeast69&format=jpg&rawFile&fileName=orangePic', 
+    ['headers' => ['Accept' => 'application/json', 'Authorization' => 'Bearer ' . $token], 
         
         'multipart' =>  [
             [
-                'name' => 'orange',
-                'contents' => file_get_contents($file, "orange")
-            ],
-            [
-                'name' => 'data',
-                'contents' => json_encode(
-                    [
-                        'userName' => 'ebra',
-                        'pw' => 'pass123',
-                        'format' => '.jpg',
-                        'rawFile' => 'C:\xampp\htdocs\SaveDrawing\drawingservice\api\orangePic.jpg',
-                        'fileName' => 'orangePic'
-                    ]
-                )
+                'name' => 'FileContents',
+                'contents' => file_get_contents($file),
+                'filename' => 'orange.jpg'
             ]
         ]
 
