@@ -50,7 +50,7 @@ if (class_exists($controllerName)) {
 
     if ($request->accept == "application/json") {
         if ($request->verb == "POST") {
-            // $data = json_decode($request->payload);
+            $data = $request->url_parameters;
 
             //Check if the controller is for files
             if ($controllerName == "FileController") {
@@ -94,7 +94,6 @@ if (class_exists($controllerName)) {
                 $client = $controller->addClient($data->clientName, $data->userName, $data->password);
                 $response->payload = $client;
             }
-            // echo $response->payload;
         }
 
         //Get requests processes.
@@ -144,6 +143,7 @@ if (class_exists($controllerName)) {
                     echo $e;
                 }
             }
+            //Downloads the picture requested
             elseif($data["authorize"] == "no" && $controllerName == "FileController") {
                 try {
                     $jwt;

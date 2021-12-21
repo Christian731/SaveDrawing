@@ -63,10 +63,7 @@ class AugmentSchemas
                             }
 
                             if ($schema === null) {
-                                $schema = new Schema([
-                                    '_context' => $annotation->_context,
-                                    '_aux' => true,
-                                ]);
+                                $schema = new Schema(['_context' => $annotation->_context]);
                                 $annotation->allOf[] = $schema;
                             }
 
@@ -107,11 +104,7 @@ class AugmentSchemas
                     }
                 }
                 if (!$allOfPropertiesSchema) {
-                    $allOfPropertiesSchema = new Schema([
-                        'properties' => [],
-                        '_context' => $schema->_context,
-                        '_aux' => true,
-                    ]);
+                    $allOfPropertiesSchema = new Schema(['_context' => $schema->_context, 'properties' => []]);
                     $schema->allOf[] = $allOfPropertiesSchema;
                 }
                 $allOfPropertiesSchema->properties = array_merge($allOfPropertiesSchema->properties, $schema->properties);

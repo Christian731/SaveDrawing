@@ -2,7 +2,7 @@
 
     // For Alex V and Christian David's Client API.
 
-    require_once('D:\XAMPP\htdocs\SaveDrawing\drawingservice\vendor\autoload.php');
+    require_once('C:\XAMPP\htdocs\SaveDrawing\drawingservice\vendor\autoload.php');
     use GuzzleHttp\Client;
     use GuzzleHttp\Psr7;
 
@@ -10,7 +10,7 @@
 
     $pw = "wefrwef";
     $userName= "sexybeast69";
-    $file = "D:\\XAMPP\\htdocs\\SaveDrawing\\drawingservice\\client\\orange.jpg";
+    $file = "C:\\XAMPP\\htdocs\\SaveDrawing\\drawingservice\\client\\orange.jpg";
 
     //Authorizing. 
     $authorize = $client->request('GET', 'http://localhost/SaveDrawing/drawingservice/api/client/?authorize=yes&pw='. $pw. "&userName=" . $userName, ['headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json']]);
@@ -53,17 +53,17 @@
     // echo $insertFile->getBody();
     
     // Inserting file.
-    $insertFile = $client->request('POST', 'http://localhost/SaveDrawing/drawingservice/api/file/?userName=sexybeast69&format=jpg&rawFile&fileName=orangePic', 
-    ['headers' => ['Accept' => 'application/json', 'Authorization' => 'Bearer ' . $token], 
+    // $insertFile = $client->request('POST', 'http://localhost/SaveDrawing/drawingservice/api/file/?userName=sexybeast69&format=jpg&rawFile&fileName=orangePic', 
+    // ['headers' => ['Accept' => 'application/json', 'Authorization' => 'Bearer ' . $token], 
         
-        'multipart' =>  [
-            [
-                'name' => 'FileContents',
-                'contents' => file_get_contents($file),
-                'filename' => 'orange.jpg'
-            ]
-        ]
+    //     'multipart' =>  [
+    //         [
+    //             'name' => 'FileContents',
+    //             'contents' => file_get_contents($file),
+    //             'filename' => 'orange.jpg'
+    //         ]
+    //     ]
 
-    ]);
-    echo $insertFile->getBody();
+    // ]);
+    // echo $insertFile->getBody();
 ?>

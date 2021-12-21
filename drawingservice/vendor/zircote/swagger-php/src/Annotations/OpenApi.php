@@ -101,6 +101,11 @@ class AbstractOpenApi extends AbstractAnnotation
     /**
      * @inheritdoc
      */
+    public static $_blacklist = ['_context', '_unmerged', '_analysis'];
+
+    /**
+     * @inheritdoc
+     */
     public static $_required = ['openapi', 'info', 'paths'];
 
     /**

@@ -28,15 +28,8 @@ abstract class AbstractAnnotation implements \JsonSerializable
     /**
      * Arbitrary attachables for this annotation.
      * These will be ignored but can be used for custom processing.
-     *
-     * @var array
      */
     public $attachables = Generator::UNDEFINED;
-
-    /**
-     * @var bool
-     */
-    public $_aux = false;
 
     /**
      * @var Context
@@ -93,7 +86,7 @@ abstract class AbstractAnnotation implements \JsonSerializable
      *
      * @var array
      */
-    public static $_blacklist = ['_context', '_unmerged', '_analysis', '_aux', 'attachables'];
+    public static $_blacklist = ['_context', '_unmerged', 'attachables'];
 
     public function __construct(array $properties)
     {
@@ -278,8 +271,6 @@ abstract class AbstractAnnotation implements \JsonSerializable
 
     /**
      * Customize the way json_encode() renders the annotations.
-     *
-     * @return mixed
      */
     #[\ReturnTypeWillChange]
     public function jsonSerialize()

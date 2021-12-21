@@ -24,7 +24,6 @@ class UtilTest extends OpenApiTestCase
             'InheritProperties',
             'Apis',
             'PHP',
-            'Parser',
             'Analysers',
             'Processors',
             'UsingRefs.php',

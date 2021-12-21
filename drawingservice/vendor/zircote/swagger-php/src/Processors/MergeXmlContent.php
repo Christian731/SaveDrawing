@@ -43,7 +43,6 @@ class MergeXmlContent
                 'example' => $xmlContent->example,
                 'examples' => $xmlContent->examples,
                 '_context' => new Context(['generated' => true], $xmlContent->_context),
-                '_aux' => true,
             ]);
             if (!$parent instanceof Parameter) {
                 $parent->content['application/xml']->mediaType = 'application/xml';

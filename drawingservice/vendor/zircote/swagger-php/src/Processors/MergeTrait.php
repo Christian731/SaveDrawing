@@ -31,9 +31,8 @@ trait MergeTrait
         }
         // merging other properties into allOf is done in the AugmentSchemas processor
         $schema->allOf[] = new Schema([
-            'ref' => Components::SCHEMA_REF . Util::refEncode($refPath),
             '_context' => $context,
-            '_aux' => true,
+            'ref' => Components::SCHEMA_REF . Util::refEncode($refPath),
         ]);
     }
 
