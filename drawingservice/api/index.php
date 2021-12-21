@@ -160,7 +160,7 @@ if (class_exists($controllerName)) {
                         $client = $client->getClient($data["userName"]);
                         $file = $controller->getFile($data["fileName"]);
                         // var_dump($file);
-                        $url = 'http://localhost/SaveDrawing/drawingservice/SavedFiles/'. $file["fileName"].$file["format"];
+                        $url = 'http://localhost/SaveDrawing/drawingservice/SavedFiles/'. $file["fileName"].".".$file["format"];
                         $file_name = basename($url);
                         if (file_put_contents($file_name, file_get_contents($url)))
                         {

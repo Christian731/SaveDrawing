@@ -34,26 +34,14 @@
 	// ))]);
 
 
-    // // Finding file.
-    // $findFile = $client->request('GET', 'http://localhost/SaveDrawing/drawingservice/api/file/?authorize=no&userName='. $userName .'&fileName=Ayaka', 
-    // ['headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json', 'Authorization' => 'Bearer ' . $token]]);
-    // echo $findFile->getBody() . '<br><br>';
+    // Finding file.
+    $findFile = $client->request('GET', 'http://localhost/SaveDrawing/drawingservice/api/file/?authorize=no&userName='. $userName .'&fileName=orange', 
+    ['headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json', 'Authorization' => 'Bearer ' . $token]]);
+    echo $findFile->getBody() . '<br><br>';
 
-
-    // // Inserting file.
-    // $insertFile = $client->request('POST', 'http://localhost/SaveDrawing/drawingservice/api/file/', 
-    // ['headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json', 'Authorization' => 'Bearer ' . $token], 
-    // 'body' => json_encode(array(		
-	// 'userName' => 'ebra',
-    // 'pw' => 'pass123',
-    // 'format' => '.jpg',
-	// 'rawFile' => 'C:\xampp\htdocs\SaveDrawing\drawingservice\api\orangePic.jpg',
-	// 'fileName' => 'orangePic'
-	// ))]);
-    // echo $insertFile->getBody();
     
     // Inserting file.
-    // $insertFile = $client->request('POST', 'http://localhost/SaveDrawing/drawingservice/api/file/?userName=sexybeast69&format=jpg&rawFile&fileName=orangePic', 
+    // $insertFile = $client->request('POST', 'http://localhost/SaveDrawing/drawingservice/api/file/?userName=sexybeast69&format=jpg&rawFile&fileName=orange', 
     // ['headers' => ['Accept' => 'application/json', 'Authorization' => 'Bearer ' . $token], 
         
     //     'multipart' =>  [

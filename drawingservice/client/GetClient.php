@@ -52,15 +52,15 @@
     // echo json_encode($files);
     // curl_close($ch);
 
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, 'http://localhost/SaveDrawing/drawingservice/api/client/?authorize=no&userName='.$userName);
-    curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json', 'Authorization: Bearer '.$token));
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    $response = curl_exec($ch);
-    // close cURL reource, and free up system resources
-    $files = json_decode($response)->payload;
-    echo json_encode($files);
-    curl_close($ch);
+    // $ch = curl_init();
+    // curl_setopt($ch, CURLOPT_URL, 'http://localhost/SaveDrawing/drawingservice/api/client/?authorize=no&userName='.$userName);
+    // curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json', 'Authorization: Bearer '.$token));
+    // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    // $response = curl_exec($ch);
+    // // close cURL reource, and free up system resources
+    // $files = json_decode($response)->payload;
+    // echo json_encode($files);
+    // curl_close($ch);
 
 
     // // Inserting file.
